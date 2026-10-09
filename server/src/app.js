@@ -57,6 +57,15 @@ app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 // General rate limiting
 app.use('/api', apiLimiter);
 
+// Root endpoint
+app.get('/', (req, res) => {
+  res.json({
+    success: true,
+    message: 'City Life Backend API is running',
+    healthCheck: '/api/health'
+  });
+});
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.json({

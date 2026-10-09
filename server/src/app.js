@@ -76,17 +76,17 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// Mount API routes
-app.use('/api/auth', authRoutes);
-app.use('/api/places', placeRoutes);
-app.use('/api/reports', reportRoutes);
-app.use('/api/reviews', reviewRoutes);
-app.use('/api/favorites', favoriteRoutes);
-app.use('/api/weather', weatherRoutes);
-app.use('/api/ai', aiRoutes);
-app.use('/api/dashboard', dashboardRoutes);
-app.use('/api/admin', adminRoutes);
-app.use('/api/notifications', notificationRoutes);
+// Mount API routes (supporting both /api prefix and direct paths)
+app.use(['/api/auth', '/auth'], authRoutes);
+app.use(['/api/places', '/places'], placeRoutes);
+app.use(['/api/reports', '/reports'], reportRoutes);
+app.use(['/api/reviews', '/reviews'], reviewRoutes);
+app.use(['/api/favorites', '/favorites'], favoriteRoutes);
+app.use(['/api/weather', '/weather'], weatherRoutes);
+app.use(['/api/ai', '/ai'], aiRoutes);
+app.use(['/api/dashboard', '/dashboard'], dashboardRoutes);
+app.use(['/api/admin', '/admin'], adminRoutes);
+app.use(['/api/notifications', '/notifications'], notificationRoutes);
 
 // 404 Handler
 app.use((req, res, next) => {
